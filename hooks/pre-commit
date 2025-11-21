@@ -1,0 +1,4 @@
+#!/bin/sh
+# pre-commit hook to update README and stage it
+npm run update-readme || exit 1
+git add README.md || true

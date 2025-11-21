@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Todo App</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h1>Login</h1>
+      <a href="index.html">← Back</a>
+    </div>
+
+    <form id="login-form" class="default-form" style="max-width:420px">
+      <label for="login-username">Username</label>
+      <input id="login-username" type="text" required>
+      <label for="login-password">Password</label>
+      <input id="login-password" type="password" required>
+      <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="register.html">Register</a></p>
+  </main>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

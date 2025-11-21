@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin — Todo App</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h1>Admin — Default Weekly Tasks</h1>
+      <a href="index.html">← Back to app</a>
+    </div>
+
+    <section class="admin-defaults visible">
+      <form id="default-form" class="default-form" aria-label="Add default weekly task">
+        <label for="default-weekday">Weekday</label>
+        <select id="default-weekday" required>
+          <option value="0">Sunday</option>
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
+
+        <label for="default-title">Title</label>
+        <input id="default-title" type="text" placeholder="Default task title" required>
+
+        <label for="default-tab">Tab</label>
+        <select id="default-tab">
+          <option value="personal">Personal</option>
+          <option value="work">Work</option>
+        </select>
+
+        <button type="submit">Add Default</button>
+      </form>
+
+      <table id="defaults-table">
+        <thead>
+          <tr><th>Weekday</th><th>Title</th><th>Tab</th><th>Actions</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

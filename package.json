@@ -1,0 +1,20 @@
+{
+  "name": "todo-app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "update-readme": "node scripts/update-readme.js",
+    "start": "node server-clean.js",
+    "dev": "nodemon server-clean.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register — Todo App</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <h1>Register</h1>
+      <a href="index.html">← Back</a>
+    </div>
+
+    <form id="register-form" class="default-form" style="max-width:420px">
+      <label for="reg-username">Username</label>
+      <input id="reg-username" type="text" required>
+      <label for="reg-password">Password</label>
+      <input id="reg-password" type="password" required>
+      <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </main>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

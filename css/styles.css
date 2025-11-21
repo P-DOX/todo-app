@@ -1,0 +1,163 @@
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#2563eb;
+  --success:#16a34a;
+  --card-shadow: 0 8px 20px rgba(12,18,30,0.06);
+  --soft-border: rgba(14,165,233,0.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#111}
+.container{max-width:720px;margin:48px auto;padding:20px}
+h1{margin:0 0 16px;font-size:1.6rem}
+.task-form{display:flex;gap:8px;margin-bottom:12px}
+.task-form input{flex:1;padding:10px;border:1px solid #e5e7eb;border-radius:6px;font-size:1rem}
+.task-form button{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer}
+.controls{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.filters{display:flex;gap:8px}
+.filters button{background:transparent;border:1px solid transparent;padding:6px 10px;border-radius:6px;cursor:pointer}
+.filters button.active{background:#fff;border-color:#e6eefc}
+.clear{background:transparent;border:1px solid transparent;color:var(--muted);cursor:pointer}
+.task-list{list-style:none;padding:0;margin:0}
+.task-item{display:flex;align-items:center;gap:10px;background:var(--card);padding:10px;border-radius:8px;margin-bottom:8px;border:1px solid #edf2ff}
+.task-item{box-shadow:var(--card-shadow);transition:transform .12s ease,box-shadow .12s ease}
+.task-item:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(12,18,30,0.08)}
+.task-item input[type="checkbox"]{width:18px;height:18px}
+.task-label{flex:1;display:flex;align-items:center;gap:10px}
+.task-title{font-size:1rem}
+.task-title.completed{color:var(--muted);text-decoration:line-through}
+.task-actions{display:flex;gap:8px}
+.icon-btn{background:transparent;border:none;cursor:pointer;color:var(--muted)}
+.edit-input{flex:1;padding:6px;border:1px solid #e5e7eb;border-radius:6px}
+.hint{color:var(--muted);font-size:0.9rem;margin-top:14px}
+@media (max-width:480px){.container{margin:20px;padding:12px}.task-form button{padding:10px}}
+
+/* Tabs for multiple independent lists */
+.tabs{display:flex;gap:8px;margin:10px 0}
+.tab{padding:8px 12px;border-radius:8px;border:1px solid transparent;background:transparent;cursor:pointer}
+.tab.active{background:#fff;border-color:#e6eefc;font-weight:600}
+.tab:focus{outline:2px solid rgba(37,99,235,0.18)}
+
+/* Weekly tabs */
+.week-controls{display:flex;align-items:center;gap:8px;margin:8px 0}
+.week-controls button{background:transparent;border:1px solid transparent;padding:6px 10px;border-radius:6px;cursor:pointer}
+.week-tabs{display:flex;gap:8px;flex:1;overflow:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}
+.week-tab{padding:8px 10px;border-radius:10px;background:transparent;border:1px solid transparent;cursor:pointer;min-width:84px;text-align:center;scroll-snap-align:center;transition:transform .12s ease,box-shadow .12s ease}
+.week-tab.active{background:#fff;border-color:#e6eefc;font-weight:600}
+.week-tab:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(12,18,30,0.06)}
+.week-tab .day-name{display:block;font-size:0.85rem;color:var(--muted)}
+.week-tab .day-date{display:block;font-weight:600}
+
+/* Admin defaults */
+.admin-defaults{margin-top:18px;background:#fff;padding:10px;border-radius:8px;border:1px solid #eef6ff}
+.admin-defaults h2{margin:0 0 8px;font-size:1.05rem}
+.default-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.default-form label{font-size:0.85rem;color:var(--muted)}
+.default-form select,.default-form input{padding:8px;border:1px solid #e5e7eb;border-radius:6px}
+.default-form button{background:var(--accent);color:#fff;border:none;padding:8px 10px;border-radius:6px;cursor:pointer}
+#defaults-table{width:100%;border-collapse:collapse}
+#defaults-table th,#defaults-table td{padding:8px;border-bottom:1px solid #f0f6ff;text-align:left}
+.defaults-actions button{background:transparent;border:none;color:var(--muted);cursor:pointer;margin-right:6px}
+/* hide admin tab button by default */
+.tab.hidden{display:none}
+/* admin defaults hidden unless active */
+.admin-defaults{display:none}
+.admin-defaults.visible{display:block}
+
+/* Calendar styles */
+.app-layout{display:grid;grid-template-columns:1fr;gap:18px;align-items:start;overflow:hidden}
+.app-layout.show-calendar{grid-template-columns:minmax(200px,320px) minmax(0,1fr)}
+.calendar{background:var(--card);padding:12px;border-radius:10px;border:1px solid #eef6ff;display:none;min-width:0;max-width:100%;overflow:auto}
+.calendar{box-shadow:var(--card-shadow)}
+.auth-area{display:flex;gap:10px;align-items:center}
+.auth-area a{font-size:0.95rem;color:var(--muted);text-decoration:none}
+.auth-area .who{font-weight:600;color:#111}
+.calendar.visible{display:block}
+.calendar-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.month-label{font-weight:600}
+.calendar-header button{background:transparent;border:1px solid transparent;padding:6px 8px;border-radius:6px;cursor:pointer}
+.weekdays{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;color:var(--muted);font-size:0.85rem;margin-bottom:6px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;grid-auto-rows:minmax(56px,auto)}
+.calendar-grid .day{padding:8px;border-radius:6px;text-align:center;cursor:pointer;min-height:56px;display:flex;flex-direction:column;justify-content:center;align-items:center;word-break:break-word;position:relative;padding-bottom:30px}
+.calendar-grid .day{transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+.calendar-grid .day:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(12,18,30,0.04)}
+.calendar-grid .day.other-month{color:#9aa6b2;opacity:0.6}
+.calendar-grid .day.today{border:1px dashed var(--accent)}
+.calendar-grid .day.selected{background:var(--accent);color:#fff}
+.calendar-grid .day .badge{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:inline-block;background:linear-gradient(90deg,#eef9ff,#f0fff7);padding:4px 6px;border-radius:999px;border:1px solid #e6f3ff;color:#0f172a;font-weight:600;font-size:0.75rem;white-space:nowrap;max-width:80%;text-overflow:ellipsis;overflow:hidden}
+.tasks-panel{background:transparent;min-width:0;overflow:auto;padding-left:6px}
+.selected-date{color:var(--muted);font-size:0.95rem;margin-bottom:8px}
+
+/* View tabs (Tasks / Calendar) */
+.view-tabs{display:flex;gap:8px;margin:8px 0}
+.view{padding:6px 10px;border-radius:8px;border:1px solid transparent;background:transparent;cursor:pointer}
+.view.active{background:#fff;border-color:#e6eefc;font-weight:600}
+
+/* Heatmap levels for task completion */
+.day.heat-0{background:transparent}
+.day.heat-1{background:rgba(22,163,74,0.08)}
+.day.heat-2{background:rgba(22,163,74,0.18)}
+.day.heat-3{background:rgba(22,163,74,0.30)}
+.day.heat-4{background:rgba(22,163,74,0.44)}
+
+.week-tab.heat-1{box-shadow:inset 0 -4px 0 rgba(22,163,74,0.12)}
+.week-tab.heat-2{box-shadow:inset 0 -6px 0 rgba(22,163,74,0.18)}
+.week-tab.heat-3{box-shadow:inset 0 -8px 0 rgba(22,163,74,0.26)}
+.week-tab.heat-4{box-shadow:inset 0 -10px 0 rgba(22,163,74,0.36)}
+
+.heat-legend{display:flex;gap:8px;align-items:center;margin-top:8px}
+.heat-legend .swatch{width:18px;height:12px;border-radius:3px;border:1px solid #e8f3ea}
+.heat-legend .label{font-size:0.85rem;color:var(--muted);margin-left:6px}
+
+.admin-link.hidden{display:none}
+
+/* Fancy Admin link */
+.admin-link{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:linear-gradient(135deg,#fff,#f7fbff);color:#0f172a;text-decoration:none;font-weight:600;box-shadow:0 6px 12px rgba(15,23,42,0.06);border:1px solid rgba(14,165,233,0.08);transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+.admin-link .admin-icon{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;color:var(--accent);flex:0 0 20px}
+.admin-link .admin-label{font-size:0.95rem;color:var(--accent)}
+.admin-link:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(15,23,42,0.12);background:linear-gradient(135deg,#f0fbff,#eef7ff)}
+.admin-link:active{transform:translateY(0)}
+.admin-badge{width:8px;height:8px;border-radius:99px;background:linear-gradient(90deg,#34d399,#10b981);box-shadow:0 0 8px rgba(16,185,129,0.25);margin-left:6px}
+
+/* small pulse animation for badge */
+@keyframes admin-pulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}100%{transform:scale(1);opacity:1}}
+.admin-badge{animation:admin-pulse 2.4s ease-in-out infinite}
+
+/* responsive adjustments */
+@media (max-width:640px){
+  .admin-link{padding:8px 10px;font-size:0.92rem}
+  .admin-label{display:none}
+}
+@media (max-width:880px){.app-layout{grid-template-columns:1fr;}}
+@media (max-width:880px){
+  /* Ensure calendar stacks nicely above tasks and is visible when toggled */
+  .app-layout.show-calendar{grid-template-columns:1fr}
+  .calendar{display:block}
+  .calendar.visible{display:block;margin-bottom:12px}
+
+  /* Make week tabs more compact on small screens */
+  .week-tab{min-width:56px;padding:8px 6px}
+  .week-tabs{gap:6px}
+
+  /* Day cells slightly larger for touch */
+  .calendar-grid .day{padding:10px;font-size:0.95rem;min-height:68px}
+
+  /* Improve task tap targets */
+  .task-item{padding:12px}
+  .task-form input{padding:12px}
+
+  /* Allow week-tabs to scroll horizontally smoothly */
+  .week-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .week-tabs.dragging{cursor:grabbing}
+  /* make week-tab touch targets slightly larger */
+  .week-tab{min-width:72px;padding:10px 8px}
+}
+
+/* badge tweaks */
+.badge{display:inline-block;background:linear-gradient(90deg,#eef9ff,#f0fff7);padding:4px 8px;border-radius:999px;border:1px solid #e6f3ff;color:#0f172a;font-weight:600}
+
+/* small helper when centering active item */
+.week-tab.active{transform:scale(1.03)}
